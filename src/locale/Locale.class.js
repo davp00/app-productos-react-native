@@ -12,7 +12,7 @@ export default class Locale {
 
     set ( lang )
     {
-        this.strings = locales[ lang ]
+        this.strings = locales[ lang ] || locales[ 'es' ];
     }
 
     get( module, string )

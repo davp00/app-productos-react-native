@@ -40,10 +40,16 @@ class UserStore {
         return null;
     }
 
-    @action async LoginUser( LoginData )
+    @action LoginUser( LoginData )
     {
         this.setUser( LoginData );
-        await AsyncStorage.setItem('user', JSON.stringify(this.user));
+        AsyncStorage.setItem('user', JSON.stringify(this.user));
+    }
+
+    @action LogOut()
+    {
+        this.setUser( undefined );
+        AsyncStorage.removeItem( 'user' );
     }
 }
 
