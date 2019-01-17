@@ -20,7 +20,6 @@ class UserStore {
             const userString = await AsyncStorage.getItem( 'user' );
             if ( userString )
             {
-
                 this.setUser( JSON.parse(userString) );
             }else return undefined;
         }
@@ -34,14 +33,16 @@ class UserStore {
         this.locale.set( this.currentLang );
     }
 
-    @action getToken()
+    @get getToken()
     {
-        return `Bearer ${ this.user.account.token }`
+        if ( this.user )
+            return `Bearer ${ this.user.account.token }`;
+        return null;
     }
 
     @action async LoginUser( LoginData )
     {
-        this.user = LoginData;
+        this.setUser( LoginData );
         await AsyncStorage.setItem('user', JSON.stringify(this.user));
     }
 }

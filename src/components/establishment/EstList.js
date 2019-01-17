@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {
     View,
     FlatList,
-    StyleSheet,
 } from 'react-native';
 import EstablishmentItem from "./EstItem";
 import { observer, inject } from 'mobx-react/native';
+import {Actions} from "react-native-router-flux";
 
 
 @inject('EstStore')
@@ -23,15 +23,14 @@ class EstablishmentList extends Component {
     {
         const { EstStore } = this.props;
         EstStore.selected = estCode;
-
-        // IR A LA SCREEN DE TABS
+        Actions.replace('EstRoot');
     }
 
     render()
     {
         const { establishments } = this.props;
         return (
-            <View style = { styles.container }>
+            <View>
                 <FlatList
                     renderItem={ ( {item} ) => <EstablishmentItem onPressEst={ this.onPressEst } est={ item } />}
                     data={ establishments }
@@ -41,11 +40,5 @@ class EstablishmentList extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-   container: {
-       paddingHorizontal: 10,
-       marginTop: 10
-   }
-});
 
 export default EstablishmentList;

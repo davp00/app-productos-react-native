@@ -48,7 +48,7 @@ class LoginScreen extends Component{
         this.setState( { errorEmail: false, errorPass: false, userNotFound: false } );
 
         if ( email.length !== 0 && pass.length !== 0 )
-        {
+        { // ERROR AL LOGUEARSE
             const { Login, UserStore } = this.props;
 
             Keyboard.dismiss();
