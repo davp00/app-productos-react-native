@@ -1,12 +1,15 @@
 import React from 'react';
 import { Router, Scene } from 'react-native-router-flux';
 import { StyleSheet } from 'react-native';
-import LoginScreen from "./screens/LoginScreen";
-import EstablishmentScreen from "./screens/EstablishmentScreen";
-import userStore from './store/UserStore';
-import LoadingScreen from "./screens/LoadingScreen";
-import ProductScreen from "./screens/ProductScreen";
-import MenuScreen from "./screens/MenuScreen";
+import LoginScreen from "../screens/LoginScreen";
+import EstablishmentScreen from "../screens/EstablishmentScreen";
+import userStore from '../store/UserStore';
+import LoadingScreen from "../screens/LoadingScreen";
+import ProductScreen from "../screens/ProductScreen";
+import MenuScreen from "../screens/MenuScreen";
+
+import TabIcon from './TabIcon';
+
 
 const locale = userStore.locale;
 
@@ -38,9 +41,23 @@ const AppRouter = () => (
                 key='EstRoot'
                 tabs
                 hideNavBar
+                showLabel={false}
             >
-                <Scene initial key='Products' title='Productos' component= { ProductScreen }/>
-                <Scene key='Configuration' title='Configuración' component= { MenuScreen }/>
+
+                <Scene initial
+                       key='Products'
+                       title='Productos'
+                       component= { ProductScreen }
+                       icon={ TabIcon }
+                       iconName='box'
+                       type= 'Feather'/>
+
+                <Scene key='Configuration'
+                       title='Configuración'
+                       component= { MenuScreen }
+                       icon={ TabIcon }
+                       iconName='settings'
+                       type='SimpleLineIcons'/>
             </Scene>
         </Scene>
     </Router>

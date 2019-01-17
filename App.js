@@ -15,7 +15,7 @@ import estStore from './src/store/EstStore';
 
 import CustomStyles from './src/styles/CustomStyle';
 
-import AppRouter from './src/Router';
+import AppRouter from './src/navigation/Router';
 import { ApolloProvider } from 'react-apollo';
 import clientApollo from './src/graphql/ClientGql';
 

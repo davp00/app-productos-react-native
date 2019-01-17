@@ -75,7 +75,7 @@ class EstablishmentScreen extends Component {
                             <RkText>Guardar seleccionado</RkText>
                         </View>
                     </RkCard>
-                    <EstablishmentList establishments={ data.getStablishments }/>
+                    <EstablishmentList saveSelected={ this.state.saveSelected } establishments={ data.getStablishments }/>
                 </View>
             );
     }

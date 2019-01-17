@@ -21,8 +21,8 @@ class EstablishmentList extends Component {
 
     onPressEst( estCode )
     {
-        const { EstStore } = this.props;
-        EstStore.selected = estCode;
+        const { EstStore, saveSelected } = this.props;
+        EstStore.setSelected( estCode,  saveSelected );
         Actions.replace('EstRoot');
     }
 
