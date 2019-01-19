@@ -41,7 +41,7 @@ const AppRouter = () => (
                 key='EstRoot'
                 tabs
                 hideNavBar
-                showLabel={false}
+                showLabel={ false }
             >
 
                 <Scene initial
