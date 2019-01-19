@@ -23,7 +23,9 @@ class EstablishmentList extends Component {
     {
         const { EstStore, saveSelected } = this.props;
         EstStore.setSelected( estCode,  saveSelected );
-        Actions.replace('EstRoot');
+        Actions.replace('EstRoot',{
+            code: 1
+        });
     }
 
     render()
