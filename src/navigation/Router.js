@@ -6,7 +6,7 @@ import EstablishmentScreen from "../screens/EstablishmentScreen";
 import userStore from '../store/UserStore';
 import LoadingScreen from "../screens/LoadingScreen";
 import ProductScreen from "../screens/ProductScreen";
-import MenuScreen from "../screens/MenuScreen";
+import MenuScreen from "../screens/MenuScreen/MenuScreen";
 
 import TabIcon from './TabIcon';
 

@@ -3,7 +3,8 @@ import {
     View,
     StyleSheet,
     ImageBackground,
-    Keyboard
+    Keyboard,
+    ActivityIndicator
 } from 'react-native';
 import {
     RkButton,
@@ -32,11 +33,12 @@ class LoginScreen extends Component{
         this.handleSubmit = this.handleSubmit.bind( this );
 
         this.state = {
-            email: '',
-            pass: '',
-            errorPass: false,
-            errorEmail: false,
-            userNotFound: false
+            email           : '',
+            pass            : '',
+            errorPass       : false,
+            errorEmail      : false,
+            userNotFound    : false,
+            loading         : false
         }
     }
 
@@ -44,17 +46,21 @@ class LoginScreen extends Component{
     {
         const { email, pass } = this.state;
 
+        if( this.state.loading ) return;
 
         this.setState( { errorEmail: false, errorPass: false, userNotFound: false } );
 
         if ( email.length !== 0 && pass.length !== 0 )
         { // ERROR AL LOGUEARSE
             const { Login, UserStore } = this.props;
-
+            
+            this.setState({ loading: true });
             Keyboard.dismiss();
 
             Login( this.state.email , this.state.pass )
                 .then( ({ data }) => {
+
+                    this.setState( { loading: false } );
 
                     if ( data.Login !== null)
                     {
@@ -105,7 +111,11 @@ class LoginScreen extends Component{
                             label={<Icon name={'lock'}/>}
                         />
                         <RkButton onPress={ this.handleSubmit } rkType='primary rounded' style={ styles.btnLogin } >
-                            { UserStore.locale.get('Login', 'buttonText') }
+                            { 
+                                !this.state.loading ?
+                                    UserStore.locale.get('Login', 'buttonText') :
+                                    <ActivityIndicator size='small' color='white'/>
+                            }
                         </RkButton>
 
                         {
